@@ -1,0 +1,2618 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIST JIANWEN CHENG - Artist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #faf9f7;
+            --text-primary: #2a2a2a;
+            --text-secondary: #6a6a6a;
+            --accent: #d4a574;
+            --border: #e5e3df;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            z-index: 1000;
+            border-bottom: none;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            cursor: pointer;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo:hover {
+            opacity: 0.7;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f3f0 0%, #faf9f7 100%);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 200;
+            letter-spacing: 8px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-statement {
+            max-width: 600px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 0;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            color: var(--text-primary);
+        }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-header-left {
+            text-align: left;
+        }
+
+        .gallery-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .view-all-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+            margin-top: 1rem;
+            cursor: pointer;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #667eea 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-flow 3s linear infinite;
+            font-weight: 500;
+        }
+
+        .view-all-link:hover {
+            animation: gradient-flow 1.5s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        /* Full Gallery Page */
+        .full-gallery-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-bg);
+            z-index: 1500;
+            overflow-y: auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .full-gallery-page.active {
+            display: block;
+        }
+
+        .full-gallery-header {
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+
+        .full-gallery-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .full-gallery-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tag {
+            padding: 0.6rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-tag:hover, .filter-tag.active {
+            background: var(--text-primary);
+            color: white;
+            border-color: var(--text-primary);
+        }
+
+        .full-gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .full-gallery-item {
+            aspect-ratio: 4/5;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #e5e3df;
+            border-radius: 16px;
+            transition: transform 0.4s;
+        }
+
+        .full-gallery-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .full-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .full-gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .close-gallery-btn {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .close-gallery-btn:hover {
+            background: white;
+        }
+
+        .back-to-gallery-btn {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            z-index: 1600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-primary);
+        }
+
+        .back-to-gallery-btn:hover {
+            background: white;
+            transform: translateX(-5px);
+        }
+
+        .back-to-gallery-btn::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr 0.3fr;
+            grid-template-rows: repeat(3, 200px);
+            gap: 1rem;
+        }
+
+        .gallery-item-large {
+            grid-column: 1;
+            grid-row: 1 / 4;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #e5e3df;
+            border-radius: 16px;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item-small {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #e5e3df;
+            border-radius: 16px;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item-small:nth-of-type(2) {
+            grid-column: 2;
+            grid-row: 1 / 4;
+        }
+
+        .gallery-item-small:nth-of-type(3) {
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .gallery-item-small:nth-of-type(4) {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .gallery-item-small:nth-of-type(5) {
+            grid-column: 3;
+            grid-row: 3;
+        }
+
+        .gallery-item-small:nth-of-type(6),
+        .gallery-item-small:nth-of-type(7),
+        .gallery-item-small:nth-of-type(8),
+        .gallery-item-small:nth-of-type(9) {
+            display: none;
+        }
+
+        .gallery-item-large:hover,
+        .gallery-item-small:hover {
+            transform: translateY(-8px);
+        }
+
+        .gallery-item-large img,
+        .gallery-item-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item-large:hover img,
+        .gallery-item-small:hover img {
+            transform: scale(1.05);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .search-bar {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 1rem;
+            background: white;
+            transition: box-shadow 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            width: 18px;
+            height: 18px;
+        }
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-tag {
+            padding: 0.6rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .category-tag:hover, .category-tag.active {
+            background: var(--text-primary);
+            color: white;
+            border-color: #999;
+        }
+
+        .filter-tag:hover, .filter-tag.active {
+            background: var(--text-primary);
+            color: white;
+            border-color: #999;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .article-card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .article-card-content {
+            padding: 1.5rem;
+        }
+
+        .article-card-category {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .article-card-title {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .article-card-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .article-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .document-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            overflow: hidden;
+        }
+
+        .document-modal.active {
+            display: block;
+        }
+
+        .document-viewer-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .document-header {
+            background: var(--primary-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .document-title {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .close-document {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: color 0.3s;
+        }
+
+        .close-document:hover {
+            color: var(--accent);
+        }
+
+        .document-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: none;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            cursor: pointer;
+            background: #e5e3df;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover .gallery-info {
+            transform: translateY(0);
+        }
+
+        .gallery-info h3 {
+            color: white;
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-info p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .video-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+        }
+
+        .video-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .video-grid-featured {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-card-featured {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .video-card-featured:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .video-thumbnail-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .video-thumbnail-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .video-overlay:hover {
+            background: rgba(0,0,0,0.5);
+        }
+
+        .play-button-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .play-button-circle:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .play-button-circle svg {
+            margin-left: 3px;
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .video-card-info {
+            padding: 1.5rem;
+        }
+
+        .video-category {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-card-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .video-card-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .featured-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .featured-article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .featured-article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .featured-article-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .featured-article-content {
+            padding: 1.5rem;
+        }
+
+        .featured-article-category {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .featured-article-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .featured-article-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .featured-article-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-tagline {
+            font-size: 1rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: #888888;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .video-item {
+            background: white;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .video-item:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .video-thumbnail-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-info h3 {
+            font-weight: 300;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .info-content {
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .info-section {
+            margin-bottom: 4rem;
+        }
+
+        .info-section h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .info-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .cv-item {
+            margin-bottom: 2rem;
+        }
+
+        .cv-year {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        .contact-icon-svg {
+            width: 32px;
+            height: 32px;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+        }
+
+        .contact-link.download-cv {
+            color: #4a90e2;
+        }
+
+        .contact-link.download-cv:hover {
+            color: #357abd;
+            text-decoration: underline;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-content {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+                letter-spacing: 6px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .article-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .gallery-masonry {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(4, 180px);
+                gap: 1rem;
+            }
+
+            .gallery-item-large {
+                grid-column: 1 / 3;
+                grid-row: 1 / 3;
+            }
+
+            .gallery-item-small:nth-of-type(2) {
+                grid-column: 3 / 5;
+                grid-row: 1 / 2;
+            }
+
+            .gallery-item-small:nth-of-type(3) {
+                grid-column: 3 / 4;
+                grid-row: 2 / 3;
+            }
+
+            .gallery-item-small:nth-of-type(4) {
+                grid-column: 4 / 5;
+                grid-row: 2 / 4;
+            }
+
+            .gallery-item-small:nth-of-type(5) {
+                grid-column: 3 / 4;
+                grid-row: 3 / 4;
+            }
+
+            .gallery-item-small:nth-of-type(6) {
+                grid-column: 1 / 2;
+                grid-row: 3 / 5;
+            }
+
+            .gallery-item-small:nth-of-type(8) {
+                grid-column: 2 / 4;
+                grid-row: 3 / 5;
+            }
+
+            .mini-gallery-container {
+                bottom: 0.3rem;
+                left: 0.3rem;
+                right: 0.3rem;
+                gap: 0.3rem;
+            }
+
+            .gallery-item-small:nth-of-type(9),
+            .gallery-item-small:nth-of-type(10),
+            .gallery-item-small:nth-of-type(11),
+            .gallery-item-small:nth-of-type(12) {
+                display: none;
+            }
+
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .video-grid-featured {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .info-content {
+                padding: 0 1rem;
+            }
+
+            .document-header {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .document-title {
+                font-size: 1rem;
+            }
+        }
+
+        /* Mobile Navigation Dropdown */
+        .mobile-nav-dropdown {
+            display: none;
+            position: relative;
+        }
+
+        .mobile-nav-select {
+            width: 100%;
+            padding: 0.4rem 2rem 0.4rem 0.8rem;
+            border: 2px solid #4a90e2;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            background: white;
+            color: var(--text-primary);
+            cursor: pointer;
+            appearance: none;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .mobile-nav-select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+
+        .dropdown-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .dropdown-icon::before {
+            content: '>';
+            display: block;
+            transform: rotate(270deg);
+            font-size: 0.9rem;
+            line-height: 1;
+        }
+
+        .dropdown-icon::after {
+            content: '>';
+            display: block;
+            transform: rotate(90deg);
+            font-size: 0.9rem;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 0.6rem 1rem;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+            }
+
+            .logo-image {
+                height: 35px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-nav-dropdown {
+                display: block;
+                flex: 1;
+                max-width: 140px;
+                margin-left: 1rem;
+            }
+
+            .mobile-nav-select {
+                padding: 0.3rem 1.25rem 0.3rem 0.5rem;
+                font-size: 0.5rem;
+                border: 1px solid #4a90e2;
+                border-radius: 20px;
+            }
+
+            .dropdown-icon {
+                right: 0.5rem;
+                gap: 0.5px;
+            }
+            
+            .dropdown-icon::before,
+            .dropdown-icon::after {
+                font-size: 0.4rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                letter-spacing: 4px;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                letter-spacing: 2px;
+                margin-bottom: 2rem;
+            }
+
+            .hero-statement {
+                font-size: 0.9rem;
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 6rem 1rem 2rem;
+                min-height: auto;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+                margin-bottom: 0.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+
+            .search-bar {
+                margin-bottom: 1.5rem;
+            }
+
+            .search-bar input {
+                padding: 0.8rem 1rem 0.8rem 2.5rem;
+                font-size: 0.9rem;
+            }
+
+            .search-icon {
+                left: 1rem;
+                width: 16px;
+                height: 16px;
+            }
+
+            .category-filters {
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .category-tag {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .article-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .article-card-image {
+                height: 200px;
+            }
+
+            .article-card-content {
+                padding: 1rem;
+            }
+
+            .article-card-title {
+                font-size: 1.1rem;
+            }
+
+            .article-card-description {
+                font-size: 0.9rem;
+            }
+
+            .article-card-meta {
+                font-size: 0.8rem;
+            }
+
+            .document-header {
+                padding: 0.8rem 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+
+            .document-title {
+                font-size: 0.95rem;
+            }
+
+            .close-document {
+                position: absolute;
+                top: 0.5rem;
+                right: 1rem;
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                text-align: left;
+            }
+
+            .gallery-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .gallery-masonry {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                grid-auto-rows: 250px;
+            }
+
+            .gallery-item-large {
+                grid-row: span 1;
+                border-radius: 12px;
+            }
+
+            .gallery-item-small {
+                border-radius: 12px;
+            }
+
+            .gallery-item-small:nth-of-type(2),
+            .gallery-item-small:nth-of-type(3),
+            .gallery-item-small:nth-of-type(4),
+            .gallery-item-small:nth-of-type(5),
+            .gallery-item-small:nth-of-type(6),
+            .gallery-item-small:nth-of-type(7),
+            .gallery-item-small:nth-of-type(8),
+            .gallery-item-small:nth-of-type(9) {
+                grid-column: auto;
+                grid-row: auto;
+                display: block;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                aspect-ratio: 3/4;
+            }
+
+            .gallery-info {
+                padding: 1.5rem 1rem 1rem;
+            }
+
+            .gallery-info h3 {
+                font-size: 1rem;
+            }
+
+            .gallery-info p {
+                font-size: 0.8rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .video-grid-featured {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .video-info {
+                padding: 1rem;
+            }
+
+            .video-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .video-info p {
+                font-size: 0.85rem;
+            }
+
+            .play-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .info-content {
+                margin: 1.5rem auto;
+            }
+
+            .info-section {
+                margin-bottom: 2.5rem;
+            }
+
+            .info-section h2 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .info-section p {
+                font-size: 0.95rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .cv-item {
+                margin-bottom: 1.5rem;
+            }
+
+            .cv-year {
+                font-size: 0.9rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .modal-content {
+                max-width: 95%;
+            }
+
+            .modal-close {
+                top: -40px;
+                font-size: 1.5rem;
+            }
+
+            .back-to-gallery-btn {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .close-gallery-btn {
+                top: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.8rem;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+
+            .article-card-image {
+                height: 180px;
+            }
+
+            .category-filters {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .category-tag {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1600px;
+            }
+
+            .hero-title {
+                font-size: 5rem;
+                letter-spacing: 10px;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .article-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo" onclick="scrollToSection('home')">
+                <img src="https://ristjianwencheng-career.oss-cn-shanghai.aliyuncs.com/Website_LOGO.png" alt="RIST JIANWEN CHENG" class="logo-image">
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="scrollToSection('home')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                    HOME
+                </a></li>
+                <li><a onclick="openFullGallery()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                    GALLERY
+                </a></li>
+                <li><a onclick="openVideoPage()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                    VIDEOS
+                </a></li>
+                <li><a onclick="openArticlePage()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    ARTICLES
+                </a></li>
+                <li><a onclick="scrollToSection('information')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    INFORMATION
+                </a></li>
+            </ul>
+            <div class="mobile-nav-dropdown">
+                <select id="mobileNav" class="mobile-nav-select" onchange="handleMobileNav()">
+                    <option value="home">HOME</option>
+                    <option value="gallery">GALLERY</option>
+                    <option value="video">VIDEOS</option>
+                    <option value="articles">ARTICLES</option>
+                    <option value="information">INFORMATION</option>
+                </select>
+                <span class="dropdown-icon"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="section">
+        <h1 class="hero-title">RIST JIANWEN CHENG</h1>
+        <p class="hero-subtitle">ARTIST / VISUAL CREATOR</p>
+        <p class="hero-statement">
+            I enjoy exploring and constantly experimenting with new software and mediums, mapping reality into virtual worlds and using these worlds to create new possibilities. I seek to capture subtle, enduring moments suspended between stillness and motion.
+        </p>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <div class="gallery-header">
+                <div class="gallery-header-left">
+                    <h2 class="section-title">Featured Gallery</h2>
+                    <p class="gallery-subtitle">Explore my collection of artworks and captured moments</p>
+                </div>
+                <a onclick="openFullGallery()" class="view-all-link">View All →</a>
+            </div>
+            <div class="gallery-masonry">
+                <div class="gallery-item-large" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/1%20or%202%20%40wolfcubwolfcub%20(1).jpg" alt="Gallery Image 1">
+                    <div class="gallery-info">
+                        <h3>Visual Story I</h3>
+                        <p>Contemporary Art, 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Half%20of%20expression%2CAre%20the%20things%20we%20leave%20unsaid.%20(5).jpg" alt="Gallery Image 2">
+                    <div class="gallery-info">
+                        <h3>Visual Story II</h3>
+                        <p>Mixed Media, 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/481664167_650135954224279_8620037790940010125_n.jpg" alt="Gallery Image 3">
+                    <div class="gallery-info">
+                        <h3>Visual Story III</h3>
+                        <p>Photography, 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/482060541_650137260890815_5853492445526188527_n.jpg" alt="Gallery Image 4">
+                    <div class="gallery-info">
+                        <h3>Visual Story IV</h3>
+                        <p>Digital Art, 2023</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/481765748_650136240890917_7887633390541422267_n.jpg" alt="Gallery Image 5">
+                    <div class="gallery-info">
+                        <h3>Visual Story V</h3>
+                        <p>Architecture, 2023</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Half%20of%20expression%2CAre%20the%20things%20we%20leave%20unsaid.%20(5).jpg" alt="Gallery Image 6">
+                    <div class="gallery-info">
+                        <h3>Visual Story VI</h3>
+                        <p>Travel Photography, 2023</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Baroque%20Perspective%20at%20Val-de-Gr%C3%A2ce%20%20%23vanishingpoint%23dome%23straightfacades%23facade%23baroque%23architecture%23perspective%23symmetry%23accidentallywesanderson%23vsco%23france%23paris%23portroya.jpg" alt="Gallery Image 7">
+                    <div class="gallery-info">
+                        <h3>Visual Story VII</h3>
+                        <p>Fine Art, 2023</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Scratches%20of%20a%20Croatian%20summer%E2%80%A2%E2%80%A2%E2%80%A2%23croatia%20%23summer%20%23passionpasport%20%23mytinyatlas%20(4).jpg" alt="Gallery Image 8">
+                    <div class="gallery-info">
+                        <h3>Visual Story VIII</h3>
+                        <p>Technical Art, 2024</p>
+                    </div>
+                    <div class="mini-gallery-container">
+                        <div class="mini-gallery-item">
+                            <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Rest%20Curves_LE_upscale_strong_x4.jpg" alt="Mini 1">
+                        </div>
+                        <div class="mini-gallery-item">
+                            <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/481664167_650135954224279_8620037790940010125_n.jpg" alt="Mini 2">
+                        </div>
+                        <div class="mini-gallery-item">
+                            <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/482060541_650137260890815_5853492445526188527_n.jpg" alt="Mini 3">
+                        </div>
+                        <div class="mini-gallery-item">
+                            <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/p1.jpg" alt="Mini 4">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Half%20of%20expression%2CAre%20the%20things%20we%20leave%20unsaid.%20(5).jpg" alt="Gallery Image 9">
+                    <div class="gallery-info">
+                        <h3>Visual Story IX</h3>
+                        <p>Photography, 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Rest%20Curves_LE_upscale_strong_x4.jpg" alt="Gallery Image 10">
+                    <div class="gallery-info">
+                        <h3>Visual Story X</h3>
+                        <p>Technical Art, 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/481664167_650135954224279_8620037790940010125_n.jpg" alt="Gallery Image 11">
+                    <div class="gallery-info">
+                        <h3>Visual Story XI</h3>
+                        <p>Photography, 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item-small" onclick="openImageModal(this)">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/482060541_650137260890815_5853492445526188527_n.jpg" alt="Gallery Image 12">
+                    <div class="gallery-info">
+                        <h3>Visual Story XII</h3>
+                        <p>Digital Art, 2023</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div class="gallery-item" onclick="openImageModal(this)" style="aspect-ratio: 4/5; position: relative; overflow: hidden; cursor: pointer; background: #e5e3df; border-radius: 16px;">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Baroque%20Perspective%20at%20Val-de-Gr%C3%A2ce%20%20%23vanishingpoint%23dome%23straightfacades%23facade%23baroque%23architecture%23perspective%23symmetry%23accidentallywesanderson%23vsco%23france%23paris%23portroya.jpg" alt="Baroque Perspective" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-info">
+                        <h3>Baroque Perspective</h3>
+                        <p>Architecture, 2023</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal(this)" style="aspect-ratio: 4/5; position: relative; overflow: hidden; cursor: pointer; background: #e5e3df; border-radius: 16px;">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Half%20of%20expression%2CAre%20the%20things%20we%20leave%20unsaid.%20(5).jpg" alt="Expression" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-info">
+                        <h3>Unsaid Expression</h3>
+                        <p>Fine Art, 2023</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal(this)" style="aspect-ratio: 4/5; position: relative; overflow: hidden; cursor: pointer; background: #e5e3df; border-radius: 16px;">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Rest%20Curves_LE_upscale_strong_x4.jpg" alt="Rest Curves" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-info">
+                        <h3>Rest Curves</h3>
+                        <p>Technical Art, 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal(this)" style="aspect-ratio: 4/5; position: relative; overflow: hidden; cursor: pointer; background: #e5e3df; border-radius: 16px;">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Scratches%20of%20a%20Croatian%20summer%E2%80%A2%E2%80%A2%E2%80%A2%23croatia%20%23summer%20%23passionpasport%20%23mytinyatlas%20(4).jpg" alt="Croatian Summer" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-info">
+                        <h3>Croatian Summer</h3>
+                        <p>Travel Photography, 2023</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal(this)" style="aspect-ratio: 4/5; position: relative; overflow: hidden; cursor: pointer; background: #e5e3df; border-radius: 16px;">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/mvi_3043.mp4%5B2024-01-13%2002-48-50.159%5Dj.jpg" alt="Video Frame" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-info">
+                        <h3>Motion Study</h3>
+                        <p>Video Art, 2024</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openImageModal(this)" style="aspect-ratio: 4/5; position: relative; overflow: hidden; cursor: pointer; background: #e5e3df; border-radius: 16px;">
+                    <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/p1.jpg" alt="Portrait" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-info">
+                        <h3>Portrait Study</h3>
+                        <p>Photography, 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video" class="section">
+        <div class="container">
+            <div class="video-header">
+                <div>
+                    <h2 class="section-title">Featured Videos</h2>
+                    <p class="video-subtitle">Explore my latest video creations</p>
+                </div>
+                <a onclick="openVideoPage()" class="view-all-link">View All →</a>
+            </div>
+            <div class="video-grid-featured">
+                <div class="video-card-featured">
+                    <div class="video-thumbnail-wrapper">
+                        <video class="video-thumbnail-bg">
+                            <source src="https://edef3.pcloud.com/cfZW7t3pIZWVNcB17Z7ueBZZalEL0kZ2ZZxnJZZOVDRXZx8ZyzZLpZ4HZgpZl4Zb0ZGVZ3kZw8Z28ZwJZ9LZ6JZyNlNDjt3iubbUL3tMb4F3j05mnn7/video1.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay" onclick="playVideo(this)">
+                            <div class="play-button-circle">
+                                <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">8:42</div>
+                    </div>
+                    <div class="video-card-info">
+                        <div class="video-category">LIFESTYLE</div>
+                        <h3 class="video-card-title">Creative Process: Behind the Scenes</h3>
+                        <p class="video-card-description">A look into my creative workflow and daily routines that inspire productivity and innovation.</p>
+                    </div>
+                </div>
+                <div class="video-card-featured">
+                    <div class="video-thumbnail-wrapper">
+                        <video class="video-thumbnail-bg">
+                            <source src="https://edef9.pcloud.com/cfZ8zx3pIZgfKcB17Z7ueBZZDqEL0kZ2ZZxnJZZP9H6VZvLZ38Zf8Zk4ZeRZEFZY5Zk0ZyHZ8JZSRZE0ZHRZcVZ9X5D7gaj3U0rmN9j193cqudNmfDX/video2.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay" onclick="playVideo(this)">
+                            <div class="play-button-circle">
+                                <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">12:15</div>
+                    </div>
+                    <div class="video-card-info">
+                        <div class="video-category">TRAVEL</div>
+                        <h3 class="video-card-title">Travel Vlog: Exploring Hidden Gems</h3>
+                        <p class="video-card-description">Join me as I discover off-the-beaten-path locations and share travel tips for adventurous souls.</p>
+                    </div>
+                </div>
+                <div class="video-card-featured">
+                    <div class="video-thumbnail-wrapper">
+                        <video class="video-thumbnail-bg">
+                            <source src="https://edef4.pcloud.com/cfZ7KM3pIZwN9cB17Z7ueBZZ0tEL0kZ2ZZxnJZZxoLRkZn4ZtHZgLZy4Z35ZV5ZgRZypZWzZezZt4Zr0ZWJZVFZamUN6FdPVuRQrLENgrx2opt07GvX/video3.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay" onclick="playVideo(this)">
+                            <div class="play-button-circle">
+                                <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">6:40</div>
+                    </div>
+                    <div class="video-card-info">
+                        <div class="video-category">ART</div>
+                        <h3 class="video-card-title">Interstitial: Performance Art</h3>
+                        <p class="video-card-description">Documentation of performance art exploring liminal spaces and the boundaries of visual expression.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured-articles" class="section" style="min-height: auto; padding: 4rem 2rem;">
+        <div class="container">
+            <div class="gallery-header">
+                <div class="gallery-header-left">
+                    <h2 class="section-title">Featured Articles</h2>
+                    <p class="gallery-subtitle">Explore my thoughts, ideas, and stories from my creative journey</p>
+                </div>
+                <a onclick="openArticlePage()" class="view-all-link">View All →</a>
+            </div>
+            <div class="featured-articles-grid">
+                <div class="featured-article-card" onclick="openDocument('Reset Curve(s) Tool', 'https://e.pcloud.link/publink/show?code=XZUSQIZ2AbRIYw1Qw5VGGfSMWlmpmAx8IHy')">
+                    <img src="https://edef1.pcloud.com/DLZ8Q5GpIZJM1oB17Z7ueBZZfAEL0kZ2ZZxnJZZtsAZvzZu0ZzFZQO9krDNmwJBCUjXrbgB13uV29H47/Article1.jpg" alt="Reset Curves Tool" class="featured-article-image">
+                    <div class="featured-article-content">
+                        <div class="featured-article-category">Technical</div>
+                        <h3 class="featured-article-title">Reset Curve(s) Tool - Technical Development</h3>
+                        <p class="featured-article-description">Developed a Maya plugin tool for precise curve rebuilding and recreation in 3D animation workflows.</p>
+                        <div class="featured-article-meta">
+                            <span>📅 Aug 01, 2025</span>
+                            <span>⏱️ 8 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-article-card" onclick="openDocument('Journey Through Southeast Asia', 'travel-sea')">
+                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800" alt="Southeast Asia" class="featured-article-image">
+                    <div class="featured-article-content">
+                        <div class="featured-article-category">Travel</div>
+                        <h3 class="featured-article-title">Journey Through Southeast Asia</h3>
+                        <p class="featured-article-description">Tales from backpacking across vibrant cultures, stunning landscapes, and unforgettable experiences.</p>
+                        <div class="featured-article-meta">
+                            <span>📅 October 22, 2025</span>
+                            <span>⏱️ 6 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-article-card" onclick="openDocument('Capturing Perfect Moments', 'writing-photo')">
+                    <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800" alt="Writing" class="featured-article-image">
+                    <div class="featured-article-content">
+                        <div class="featured-article-category">Writing</div>
+                        <h3 class="featured-article-title">Capturing Perfect Moments: Photography Tips</h3>
+                        <p class="featured-article-description">Essential techniques for amateur photographers looking to elevate their craft and capture stunning images.</p>
+                        <div class="featured-article-meta">
+                            <span>📅 September 15, 2025</span>
+                            <span>⏱️ 4 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="information" class="section">
+        <div class="container">
+            <h2 class="section-title">INFORMATION</h2>
+            <div style="text-align: center; margin: 0 auto 4rem; max-width: 400px;">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/p1.jpg" alt="RIST JIANWEN CHENG" style="width: 100%; max-width: 300px; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            </div>
+            <div class="info-content">
+                <div class="info-section">
+                    <h2>BIOGRAPHY</h2>
+                    <p>I am passionate about art, I am curious about science. I grew up in a quiet, small, natural area, which was the starting point of my growth: In the fragrant, awakening days of early spring, I felt the vitality of life; on sweltering summer nights, I looked up at the starry sky and imagined the unknown universe; In the misty late autumn, I am immersed in my thoughts as the fallen leaves drift by; and in the bitter cold of winter, I experience the power of silence and perseverance. These vividly changing seasons sharpened my perception and imagination.</p>
+                    
+                    <p>Studying the natural sciences allowed me to understand the order and laws of the universe from a materialist perspective. This rational understanding provides a solid foundation and creative expansion for my passionate artistic practice, playing a crucial role in sustainable exploration. At the intersection of observation and creation, I strive to interpret the mysteries of nature through both the form of art and the essence of science.</p>
+                    
+                    <p>Looking back across the river of time, all of this is vividly reflected—from the timeless beauty of classical art to the avant-garde explorations of contemporary art, I have experienced the infinite possibilities of artistic expression and the profound insights that science provides into the order and laws of the world. Art inspires scientific thought, while science enriches artistic creation—like the precise and self-regulating feedback systems in living organisms, they interact and mutually reinforce one another.</p>
+                    
+                    <p>We are fortunate to live in an unprecedented era, where modern technology has expanded how art can be expressed. My studies in cinematic visual arts in Shanghai laid a solid foundation for my professional career. I was later fortunate to collaborate with creators from around the world on the production of the Hollywood animated film <em>Kung Fu Panda 3</em>, which became a significant milestone in my professional journey.</p>
+                    
+                    <p>Subsequently, I moved to Europe to continue my career. I keep learning and experimenting with new mediums and creating visually striking works of art. Over the years, bringing creativity and soul to the 3D film industry, and striving to deliver breathtaking visual experiences to audiences around the world.</p>
+                </div>
+
+                <div class="info-section">
+                    <h2>EDUCATION</h2>
+                    <div class="cv-item">
+                        <div class="cv-year">2022</div>
+                        <p>MFA in Visual Arts, Central Academy of Fine Arts, Beijing</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-year">2019</div>
+                        <p>BFA in Painting, China Academy of Art, Hangzhou</p>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h2>FILMOGRAPHY</h2>
+                    <div class="cv-item">
+                        <div class="cv-year">Release Date: June 12, 2025</div>
+                        <p>Chickenhare and the Secret of the Groundhog — Feature Film | Brussels, Belgium / Paris, France<br>
+                        The film was produced by Belgium's nWave Digital and France's Octopolis, in association with Sony Pictures Releasing. World Premiere at Annecy International Film Festival.<br>
+                        Distributed by: SND (France) / Sony Pictures (International)</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-year">Release Date: June 15, 2023</div>
+                        <p>The Inseparables — Feature Film | Brussels, Belgium / Paris, France / Madrid, Spain<br>
+                        The film was produced by Belgium's nWave Digital and France's Octopolis, in association with Spain's A Contracorriente Films. World Premiere at Annecy International Film Festival.<br>
+                        Distributed by: KMBO (France)</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-year">Release Date: February 3, 2022</div>
+                        <p>Hopper et le hamster des ténèbres — Feature Film | Brussels, Belgium / Paris, France<br>
+                        The film was produced by Belgium's nWave Digital and France's Octopolis. World premiere in Russia.<br>
+                        Distributed by: Belga Films (Benelux) / Sony Pictures Releasing / Netflix (International) / Lionsgate (USA)</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-year">Release Date: August 5, 2020</div>
+                        <p>Bigfoot Family — Feature Film | Brussels, Belgium / Paris, France<br>
+                        The film was produced by Belgium's nWave Digital and France's Octopolis. World Premiere at Annecy International Film Festival.<br>
+                        Distributed by: Belga Films (Benelux) / Apollo Films / TF1 Studio (France) / Netflix (International)</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-year">Release Date: April 3, 2019</div>
+                        <p>The Queen's Corgi — Feature Film | Brussels, Belgium<br>
+                        The film was produced by nWave Pictures (Brussels, Belgium). World Premiere at L'Alpe d'Huez International Comedy Film Festival.<br>
+                        Distributed by: Belga Films</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-year">Release Date: July 26, 2017</div>
+                        <p>The Son of Bigfoot — Feature Film | Paris, France / Brussels, Belgium<br>
+                        The film was produced by Belgium's nWave Digital and France's StudioCanal. World Premiere at Annecy International Film Festival.<br>
+                        Distributed by: Belga Films (Benelux) / StudioCanal (France)</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-year">Release Date: January 23, 2016</div>
+                        <p>Kung Fu Panda 3 — Feature Film | California, USA / Shanghai, China<br>
+                        The film was co-produced by the Hollywood studio DreamWorks and Oriental DreamWorks in Shanghai, China, with approximately one-third of the production carried out in China. This marked the first time a U.S.-led feature film was co-produced with a Chinese company. World Premiere at China.<br>
+                        Distributed by: 20th Century Fox</p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-year">Release Dates: September 19, 2013</div>
+                        <p>How to Train Your Dragon: Dragons – Defenders of Berk — TV Series | California, USA / Shanghai, China<br>
+                        The Series was produced by DreamWorks in collaboration with Oriental DreamWorks<br>
+                        Distributed by: Netflix</p>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h2>CONTACT</h2>
+                    <div class="contact-item">
+                        <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="5" width="18" height="14" rx="2" ry="2"/>
+                            <polyline points="3 7 12 13 21 7"/>
+                        </svg>
+                        <span>rist.cheng@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Europe - Brussels 1000, Belgium</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                        <a href="#" class="contact-link">Instagram</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <a href="#" class="contact-link download-cv">Download CV (PDF)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-tagline">Showcasing creativity and passion through images, videos, and articles.</p>
+            <div class="footer-social">
+                <a href="mailto:rist.cheng@gmail.com" class="social-icon" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                <a href="https://t.me/dxdydzC" target="_blank" class="social-icon" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.04 1.03 4.39L2 22l5.69-1.03C9.03 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.38 0-2.73-.28-4-.83l-.29-.15-3.01.55.55-2.99-.16-.31A7.93 7.93 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+                        <circle cx="8" cy="12" r="1.5"/>
+                        <circle cx="12" cy="12" r="1.5"/>
+                        <circle cx="16" cy="12" r="1.5"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/rist-jw-cheng/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-copyright">© 2025 RIST JIANWEN CHENG. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="video-full-page" class="full-gallery-page">
+        <button class="back-to-gallery-btn" onclick="closeVideoPage()">Back</button>
+        <button class="close-gallery-btn" onclick="closeVideoPage()">×</button>
+        <div class="container" style="padding-top: 2rem;">
+            <div class="article-header">
+                <h2 class="section-title" style="text-align: center;">All Videos</h2>
+                <p class="section-subtitle">Watch my latest video content and creations</p>
+                
+                <div class="category-filters" style="margin-top: 2rem;">
+                    <div class="category-tag active" data-category="all" onclick="filterVideoCategory('all')">All</div>
+                    <div class="category-tag" data-category="Education" onclick="filterVideoCategory('Education')">Education</div>
+                    <div class="category-tag" data-category="Lifestyle" onclick="filterVideoCategory('Lifestyle')">Lifestyle</div>
+                    <div class="category-tag" data-category="Travel" onclick="filterVideoCategory('Travel')">Travel</div>
+                </div>
+            </div>
+
+            <div class="video-grid-featured" id="videoGridFull">
+                <div class="video-card-featured" data-category="Education">
+                    <div class="video-thumbnail-wrapper">
+                        <video class="video-thumbnail-bg">
+                            <source src="https://edef4.pcloud.com/cfZ7KM3pIZwN9cB17Z7ueBZZ0tEL0kZ2ZZxnJZZxoLRkZn4ZtHZgLZy4Z35ZV5ZgRZypZWzZezZt4Zr0ZWJZVFZamUN6FdPVuRQrLENgrx2opt07GvX/video3.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay" onclick="playVideo(this)">
+                            <div class="play-button-circle">
+                                <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">10:30</div>
+                    </div>
+                    <div class="video-card-info">
+                        <div class="video-category">Education</div>
+                        <h3 class="video-card-title">Photography Tutorial: Natural Light</h3>
+                        <p class="video-card-description">Learn how to work with natural light to create stunning portraits and landscape...</p>
+                    </div>
+                </div>
+                <div class="video-card-featured" data-category="Lifestyle">
+                    <div class="video-thumbnail-wrapper">
+                        <video class="video-thumbnail-bg">
+                            <source src="https://edef3.pcloud.com/cfZW7t3pIZWVNcB17Z7ueBZZalEL0kZ2ZZxnJZZOVDRXZx8ZyzZLpZ4HZgpZl4Zb0ZGVZ3kZw8Z28ZwJZ9LZ6JZyNlNDjt3iubbUL3tMb4F3j05mnn7/video1.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay" onclick="playVideo(this)">
+                            <div class="play-button-circle">
+                                <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">8:42</div>
+                    </div>
+                    <div class="video-card-info">
+                        <div class="video-category">Lifestyle</div>
+                        <h3 class="video-card-title">Creative Process: Behind the Scenes</h3>
+                        <p class="video-card-description">A look into my creative workflow and daily routines that inspire productivity and...</p>
+                    </div>
+                </div>
+                <div class="video-card-featured" data-category="Travel">
+                    <div class="video-thumbnail-wrapper">
+                        <video class="video-thumbnail-bg">
+                            <source src="https://edef9.pcloud.com/cfZ8zx3pIZgfKcB17Z7ueBZZDqEL0kZ2ZZxnJZZP9H6VZvLZ38Zf8Zk4ZeRZEFZY5Zk0ZyHZ8JZSRZE0ZHRZcVZ9X5D7gaj3U0rmN9j193cqudNmfDX/video2.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay" onclick="playVideo(this)">
+                            <div class="play-button-circle">
+                                <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="video-duration">12:15</div>
+                    </div>
+                    <div class="video-card-info">
+                        <div class="video-category">Travel</div>
+                        <h3 class="video-card-title">Travel Vlog: Exploring Hidden Gems</h3>
+                        <p class="video-card-description">Join me as I discover off-the-beaten-path locations and share travel tips for adventuro...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="article-full-page" class="full-gallery-page">
+        <button class="back-to-gallery-btn" onclick="closeArticlePage()">Back</button>
+        <button class="close-gallery-btn" onclick="closeArticlePage()">×</button>
+        <div class="container" style="padding-top: 2rem;">
+            <div class="article-header">
+                <h2 class="section-title" style="text-align: center;">All Articles</h2>
+                <p class="section-subtitle">Thoughts, ideas, and stories from my creative journey.</p>
+                
+                <div class="search-bar">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input type="text" placeholder="Search articles..." id="searchInputFull" onkeyup="searchArticlesFull()">
+                </div>
+
+                <div class="category-filters">
+                    <div class="category-tag active" data-category="all" onclick="filterCategoryFull('all')">All</div>
+                    <div class="category-tag" data-category="Technical" onclick="filterCategoryFull('Technical')">Technical</div>
+                    <div class="category-tag" data-category="Travel" onclick="filterCategoryFull('Travel')">Travel</div>
+                    <div class="category-tag" data-category="Writing" onclick="filterCategoryFull('Writing')">Writing</div>
+                </div>
+            </div>
+
+            <div class="article-grid" id="articleGridFull">
+                <div class="article-card" data-category="Technical" onclick="openDocument('Reset Curve(s) Tool', 'https://e.pcloud.link/publink/show?code=XZUSQIZ2AbRIYw1Qw5VGGfSMWlmpmAx8IHy')">
+                    <img src="https://edef1.pcloud.com/DLZ8Q5GpIZJM1oB17Z7ueBZZfAEL0kZ2ZZxnJZZtsAZvzZu0ZzFZQO9krDNmwJBCUjXrbgB13uV29H47/Article1.jpg" alt="Reset Curves Tool" class="article-card-image">
+                    <div class="article-card-content">
+                        <div class="article-card-category">Technical</div>
+                        <h3 class="article-card-title">Reset Curve(s) Tool - Technical Development</h3>
+                        <p class="article-card-description">Developed a Maya plugin tool for precise curve rebuilding and recreation in 3D animation workflows.</p>
+                        <div class="article-card-meta">
+                            <span>📅 Aug 01, 2025</span>
+                            <span>⏱️ 8 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" data-category="Travel" onclick="openDocument('Journey Through Southeast Asia', 'travel-sea')">
+                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800" alt="Southeast Asia" class="article-card-image">
+                    <div class="article-card-content">
+                        <div class="article-card-category">Travel</div>
+                        <h3 class="article-card-title">Journey Through Southeast Asia</h3>
+                        <p class="article-card-description">Tales from backpacking across vibrant cultures, stunning landscapes, and unforgettable experiences.</p>
+                        <div class="article-card-meta">
+                            <span>📅 October 22, 2025</span>
+                            <span>⏱️ 6 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" data-category="Writing" onclick="openDocument('Capturing Perfect Moments', 'writing-photo')">
+                    <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800" alt="Writing" class="article-card-image">
+                    <div class="article-card-content">
+                        <div class="article-card-category">Writing</div>
+                        <h3 class="article-card-title">Capturing Perfect Moments: Photography Tips</h3>
+                        <p class="article-card-description">Essential techniques for amateur photographers looking to elevate their craft and capture stunning images.</p>
+                        <div class="article-card-meta">
+                            <span>📅 September 15, 2025</span>
+                            <span>⏱️ 4 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-gallery-page" id="fullGalleryPage">
+        <button class="back-to-gallery-btn" onclick="backToGallerySection()">Back</button>
+        <button class="close-gallery-btn" onclick="closeFullGallery()">×</button>
+        <div class="full-gallery-header">
+            <h2 class="full-gallery-title">Complete Gallery</h2>
+            <p class="full-gallery-subtitle">Capture, frame, and create fleeting moments of beauty</p>
+            <div class="gallery-filters">
+                <div class="filter-tag active" data-filter="all">All</div>
+                <div class="filter-tag" data-filter="drawing">Drawing & Painting</div>
+                <div class="filter-tag" data-filter="sculpture">Sculpture</div>
+                <div class="filter-tag" data-filter="visual">Visual Arts</div>
+                <div class="filter-tag" data-filter="momentary">Momentary</div>
+            </div>
+        </div>
+        <div class="full-gallery-grid" id="fullGalleryGrid">
+            <div class="full-gallery-item" data-category="urban" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/1%20or%202%20%40wolfcubwolfcub%20(1).jpg" alt="Urban Scene">
+            </div>
+            <div class="full-gallery-item" data-category="urban" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/481664167_650135954224279_8620037790940010125_n.jpg" alt="City View">
+            </div>
+            <div class="full-gallery-item" data-category="urban" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/481765748_650136240890917_7887633390541422267_n.jpg" alt="Urban Photography">
+            </div>
+            <div class="full-gallery-item" data-category="nature" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/482060541_650137260890815_5853492445526188527_n.jpg" alt="Nature Scene">
+            </div>
+            <div class="full-gallery-item" data-category="architecture" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Baroque%20Perspective%20at%20Val-de-Gr%C3%A2ce%20%20%23vanishingpoint%23dome%23straightfacades%23facade%23baroque%23architecture%23perspective%23symmetry%23accidentallywesanderson%23vsco%23france%23paris%23portroya.jpg" alt="Baroque Architecture">
+            </div>
+            <div class="full-gallery-item" data-category="interior" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Half%20of%20expression%2CAre%20the%20things%20we%20leave%20unsaid.%20(5).jpg" alt="Interior Design">
+            </div>
+            <div class="full-gallery-item" data-category="architecture" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Rest%20Curves_LE_upscale_strong_x4.jpg" alt="Technical Design">
+            </div>
+            <div class="full-gallery-item" data-category="nature" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Scratches%20of%20a%20Croatian%20summer%E2%80%A2%E2%80%A2%E2%80%A2%23croatia%20%23summer%20%23passionpasport%20%23mytinyatlas%20(4).jpg" alt="Croatian Summer">
+            </div>
+            <div class="full-gallery-item" data-category="urban" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/mvi_3043.mp4%5B2024-01-13%2002-48-50.159%5Dj.jpg" alt="Urban Moment">
+            </div>
+            <div class="full-gallery-item" data-category="nature" onclick="openImageModal(this)">
+                <img src="https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/p1.jpg" alt="Natural Beauty">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="imageModal" onclick="closeImageModal()">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeImageModal()">×</button>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <div class="document-modal" id="documentModal">
+        <div class="document-viewer-container">
+            <div class="document-header">
+                <div class="document-title" id="documentTitle">Document Viewer</div>
+                <button class="close-document" onclick="closeDocument()">×</button>
+            </div>
+            <iframe id="documentFrame" class="document-iframe" src=""></iframe>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function handleMobileNav() {
+            const select = document.getElementById('mobileNav');
+            const sectionId = select.value;
+            if (sectionId === 'articles') {
+                openArticlePage();
+            } else {
+                scrollToSection(sectionId);
+            }
+        }
+
+        // Update mobile nav dropdown based on scroll position
+        function updateMobileNav() {
+            if (window.innerWidth > 768) return;
+
+            const sections = ['home', 'gallery', 'video', 'information'];
+            const select = document.getElementById('mobileNav');
+            
+            let currentSection = 'home';
+            const scrollPosition = window.scrollY + 200;
+
+            for (const sectionId of sections) {
+                const section = document.getElementById(sectionId);
+                if (section && scrollPosition >= section.offsetTop) {
+                    currentSection = sectionId;
+                }
+            }
+
+            if (select && select.value !== currentSection) {
+                select.value = currentSection;
+            }
+        }
+
+        // Throttle scroll event for performance
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            if (scrollTimeout) {
+                window.cancelAnimationFrame(scrollTimeout);
+            }
+            scrollTimeout = window.requestAnimationFrame(function() {
+                updateMobileNav();
+            });
+        });
+
+        function filterCategory(category) {
+            document.querySelectorAll('.category-tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.article-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function searchArticles() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.article-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.article-card-title').textContent.toLowerCase();
+                const description = card.querySelector('.article-card-description').textContent.toLowerCase();
+                
+                if (title.includes(input) || description.includes(input)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openImageModal(element) {
+            const img = element.querySelector('img');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            modalImg.src = img.src;
+            modal.classList.add('active');
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        function openDocument(title, url) {
+            const modal = document.getElementById('documentModal');
+            const titleElement = document.getElementById('documentTitle');
+            const iframe = document.getElementById('documentFrame');
+            
+            titleElement.textContent = title;
+            
+            // If it's a pCloud link, use it directly
+            if (url.includes('pcloud.link')) {
+                iframe.src = url;
+            } else {
+                // Placeholder for other document types
+                iframe.srcdoc = `
+                    <html>
+                        <body style="font-family: Arial; padding: 40px; line-height: 1.6;">
+                            <h1>${title}</h1>
+                            <p>This is a placeholder for the document content.</p>
+                        </body>
+                    </html>
+                `;
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDocument() {
+            const modal = document.getElementById('documentModal');
+            const iframe = document.getElementById('documentFrame');
+            
+            modal.classList.remove('active');
+            iframe.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openFullGallery() {
+            const fullGalleryPage = document.getElementById('fullGalleryPage');
+            fullGalleryPage.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullGallery() {
+            const fullGalleryPage = document.getElementById('fullGalleryPage');
+            fullGalleryPage.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function backToGallerySection() {
+            const fullGalleryPage = document.getElementById('fullGalleryPage');
+            fullGalleryPage.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Scroll to gallery section after closing
+            setTimeout(() => {
+                scrollToSection('gallery');
+            }, 300);
+        }
+
+        function openArticlePage() {
+            const articlePage = document.getElementById('article-full-page');
+            articlePage.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticlePage() {
+            const articlePage = document.getElementById('article-full-page');
+            articlePage.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openVideoPage() {
+            const videoPage = document.getElementById('video-full-page');
+            videoPage.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoPage() {
+            const videoPage = document.getElementById('video-full-page');
+            videoPage.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function filterVideoCategory(category) {
+            document.querySelectorAll('#video-full-page .category-tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('#videoGridFull .video-card-featured');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterCategoryFull(category) {
+            document.querySelectorAll('#article-full-page .category-tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('#articleGridFull .article-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function searchArticlesFull() {
+            const input = document.getElementById('searchInputFull').value.toLowerCase();
+            const cards = document.querySelectorAll('#articleGridFull .article-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.article-card-title').textContent.toLowerCase();
+                const description = card.querySelector('.article-card-description').textContent.toLowerCase();
+                
+                if (title.includes(input) || description.includes(input)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.full-gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Add click handlers for category tags
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.category-tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    filterCategory(this.dataset.category);
+                });
+            });
+
+            document.querySelectorAll('.filter-tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    filterGallery(this.dataset.filter);
+                });
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeImageModal();
+                closeDocument();
+            }
+        });
+
+        function playVideo(overlay) {
+            const wrapper = overlay.parentElement;
+            const video = wrapper.querySelector('.video-thumbnail-bg');
+            
+            // Hide overlay
+            overlay.style.display = 'none';
+            
+            // Show controls and play
+            video.setAttribute('controls', 'controls');
+            video.play();
+            
+            // Show overlay again when video ends
+            video.addEventListener('ended', function() {
+                overlay.style.display = 'flex';
+                video.removeAttribute('controls');
+            });
+            
+            // Show overlay when paused
+            video.addEventListener('pause', function() {
+                if (video.currentTime < video.duration) {
+                    overlay.style.display = 'flex';
+                    video.removeAttribute('controls');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
