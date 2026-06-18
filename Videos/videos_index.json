@@ -11,6 +11,18 @@
     "download": ["Python Code",["ui_n_hair_setup.py","https://pub-06bd961174f94348a6d424261543b763.r2.dev/N_HAIR_SETUP/ui_n_hair_setup.py"],["cm_n_hair_setup.py","https://pub-06bd961174f94348a6d424261543b763.r2.dev/N_HAIR_SETUP/cm_n_hair_setup.py"]],
     "display": "on"
   },
+    {
+    "title": "Joint On Surface Setup Tool",
+    "category": "Work",
+    "updated_time": "2017-2022",
+    "watchTime": "2.00 min watch",
+    "video_url": "https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Videos/Joint%20On%20Surface%20Setup_Tool_RISTJIANWENCHENG.mov",
+    "thumbnail_url": "https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Video%20Thumbnails/Joint%20On%20Surface%20Setup_Thumbnail_RIST%20JIANWEN%20CHENG.png",
+    "description": "Compared to Maya's Follicle-based workflow, this system is implemented entirely through native node networks, providing an alternative Joint-on-Surface solution with improved stability, controllability, scalability, and extensibility. Although it introduces a higher level of setup complexity than a standard Follicle implementation, the resulting framework delivers more predictable behavior, greater artistic control, and more flexible, controllable, and reliable deformation results.",
+    "link": ["PDF","https://pub-be55520ef38745d6bdd2347de9cfa440.r2.dev/Joint%20On%20Surface%20Setup_Document.pdf"],
+    "download": ["Python Code","https://pub-06bd961174f94348a6d424261543b763.r2.dev/Joint_On_Surface_Setup/jointOnSurfaceSetup.py"],
+    "display": "on"
+  },
   {
     "title": "Search And BlendShape For Curves Tool",
     "category": "Work",
@@ -177,6 +189,6 @@
     "description": "Search And BlendShape For Curves enables fast automatic curve matching. You can define a maximum world-space search radius for the first CV (Base CV) of target curves relative to base curves. The tool uses this threshold to automatically pair curves and generate the corresponding BlendShapes.",
     "link": ["IMDb","https://www.imdb.com/name/nm15024113"],
     "download": ["Python Code","https://pub-06bd961174f94348a6d424261543b763.r2.dev/Reset_Curves/reset_curves.py"],
-    "display": "on"
+    "display": "off"
   }
 ]
