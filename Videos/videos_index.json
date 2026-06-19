@@ -16,11 +16,11 @@
     "category": "Work",
     "updated_time": "2017-2022",
     "watchTime": "2.00 min watch",
-    "video_url": "https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Videos/Joint%20On%20Surface%20Setup_Tool_RISTJIANWENCHENG.mov",
+    "video_url": "https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Videos/Joint%20On%20Surface%20Setup_Tool_RISTJIANWENCHENG.mp4",
     "thumbnail_url": "https://pub-8231e5ac90c04ce199d0a2879d3ea6ec.r2.dev/Video%20Thumbnails/Joint%20On%20Surface%20Setup_Thumbnail_RIST%20JIANWEN%20CHENG.png",
     "description": "Compared to Maya's Follicle-based workflow, this system is implemented entirely through native node networks, providing an alternative Joint-on-Surface solution with improved stability, controllability, scalability, and extensibility. Although it introduces a higher level of setup complexity than a standard Follicle implementation, the resulting framework delivers more predictable behavior, greater artistic control, and more flexible, controllable, and reliable deformation results.",
     "link": ["PDF","https://pub-be55520ef38745d6bdd2347de9cfa440.r2.dev/Joint%20On%20Surface%20Setup_Document.pdf"],
-    "download": ["Python Code","https://pub-06bd961174f94348a6d424261543b763.r2.dev/Joint_On_Surface_Setup/jointOnSurfaceSetup.py"],
+    "download": ["Python Code","https://pub-06bd961174f94348a6d424261543b763.r2.dev/Joint_On_Surface_Setup/joint_on_surface_setup.py"],
     "display": "on"
   },
   {
