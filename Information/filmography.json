@@ -1,6 +1,15 @@
 {
   "films": [
     {
+      "release_date": "June 21, 2026",
+      "title": "Yugly",
+      "type": "Feature Film",
+      "location": "Brussels, Belgium",
+      "description": "The film was produced by Belgium's nWave Digital and France's Octopolis, in association with Sony Pictures Releasing. World Premiere at Annecy International Film Festival.",
+      "distribution": "SND (France) / Sony Pictures (International)",
+      "link": ["YouTube", "https://youtu.be/g7Pu1eEmqAw?si=8kl2NzOPjCM3YDm8"]
+    },
+    {
       "release_date": "June 12, 2025",
       "title": "Chickenhare and the Secret of the Groundhog",
       "type": "Feature Film",
